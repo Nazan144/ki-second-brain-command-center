@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lokaler Demo-Entwurf des KI Second Brain – Knowledge Command Center.">
+  <title>Dashboard · KI Second Brain</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/demo-data.js"></script>
+  <script defer src="js/data-service.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <aside class="sidebar" aria-label="Arbeitsbereich">
+    <a class="brand" href="#dashboard"><span class="brand-mark" aria-hidden="true">✳</span><span>KI Second Brain<small>KNOWLEDGE COMMAND CENTER</small></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menü öffnen</button>
+    <nav id="navigation" aria-label="Hauptnavigation">
+      <p class="nav-label">DEIN WISSENSRAUM</p>
+      <a href="#dashboard" aria-current="page"><span aria-hidden="true">◫</span> Dashboard</a>
+      <a href="#wissen"><span aria-hidden="true">▤</span> Wissensdatenbank</a>
+      <a href="#agenten"><span aria-hidden="true">✳</span> KI-Agenten</a>
+      <a href="#workflows"><span aria-hidden="true">⇄</span> Workflows</a>
+      <a href="#lexikon"><span aria-hidden="true">Aa</span> KI-Lexikon</a>
+      <a href="#portfolio"><span aria-hidden="true">▧</span> KI-Portfolio</a>
+    </nav>
+    <div class="sidebar-note"><span class="status-dot" aria-hidden="true"></span> Raum für Verbindungen<p>Notion &amp; n8n sind für eine spätere Ausbaustufe vorgesehen.</p><span class="tag">Noch nicht verbunden</span></div>
+    <p class="sidebar-footer">Wissen sammeln. Zusammenhänge sehen.</p>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span>Dein persönlicher Wissensraum</span><span class="demo-label">Demo-Modus · keine Live-Verbindung</span></header>
+    <main id="main" tabindex="-1">
+      <div class="page-heading"><div><p class="eyebrow">KI SECOND BRAIN / <span id="breadcrumb">ÜBERSICHT</span></p><h1 id="page-title">Dashboard</h1><p id="page-description">Dein Wissen, deine Ideen und deine nächsten Schritte. An einem Ort.</p></div><span class="version">DEMO 1.0</span></div>
+      <section id="dashboard" class="view" aria-labelledby="page-title">
+        <div class="welcome"><div><p class="eyebrow">MEHR ÜBERBLICK. MEHR RAUM FÜR IDEEN.</p><h2>Aus Informationen<br>wird dein zweites Gehirn.</h2><p>Sammle Wissen, entdecke Verbindungen und entwickle aus Ideen neue Projekte.</p><a class="button" href="#wissen">Wissensraum erkunden <span aria-hidden="true">↗</span></a></div><div class="orbit" aria-hidden="true"><span class="orbit-core">✳</span><span class="orbit-node node-one">Wissen</span><span class="orbit-node node-two">Ideen</span><span class="orbit-node node-three">Projekte</span></div></div>
+        <div id="metrics" class="metrics" aria-label="Übersicht der Demo-Inhalte"></div>
+        <div class="dashboard-grid"><section class="panel"><div class="panel-heading"><div><p class="eyebrow">DEIN WISSEN</p><h2>Zuletzt bearbeitet</h2></div><a class="text-link" href="#wissen">Alle Einträge ↗</a></div><div id="recent-list"></div></section><section class="panel next-step"><p class="eyebrow">VOM WISSEN INS MACHEN</p><span class="step-symbol" aria-hidden="true">↗</span><h2>Eine Idee.<br>Viele Möglichkeiten.</h2><p>Entdecke, wie aus gesammeltem Wissen ein KI-Projekt entstehen kann.</p><a class="text-link" href="#portfolio">Demo-Projekte ansehen ↗</a></section></div>
+        <section class="connection-strip"><span class="connection-icon" aria-hidden="true">⇄</span><div><h2>Ein Platz für deine Automationen</h2><p>Die Workflow-Ansicht zeigt mögliche Abläufe mit erfundenen Beispielen.</p></div><a class="text-link" href="#workflows">Workflows ansehen ↗</a></section>
+      </section>
+      <section id="wissen" class="view" hidden aria-labelledby="page-title">
+        <div class="section-note">Erfundene Wissenskarten · Öffne einen Eintrag für weitere Informationen.</div>
+        <form id="knowledge-controls" class="search-controls" role="search" aria-label="Wissensdatenbank durchsuchen">
+          <div class="search-field"><label for="knowledge-search">Wissen durchsuchen</label><input id="knowledge-search" type="search" placeholder="Titel, Beschreibung oder Schlagwort" autocomplete="off" aria-controls="knowledge-list"></div>
+          <div class="search-field"><label for="knowledge-category">Kategorie</label><select id="knowledge-category" aria-controls="knowledge-list"><option value="">Alle Kategorien</option></select></div>
+          <button class="secondary-button" type="reset">Zurücksetzen</button>
+        </form>
+        <p id="knowledge-count" class="result-count" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div id="knowledge-list" class="card-grid"></div>
+        <p id="knowledge-empty" class="empty-state" hidden>Keine Ergebnisse. Ändere den Suchbegriff oder setze die Filter zurück.</p>
+      </section>
+      <section id="agenten" class="view" hidden aria-labelledby="page-title"><div class="section-note">Alle Agenten sind Beispiele. Es werden keine KI-Anfragen ausgeführt.</div><div id="agent-list" class="card-grid"></div></section>
+      <section id="workflows" class="view" hidden aria-labelledby="page-title"><div class="section-note">Alle Abläufe sind simuliert. Es werden keine Automationen gestartet.</div><div id="workflow-list" class="workflow-grid"></div></section>
+      <section id="lexikon" class="view" hidden aria-labelledby="page-title">
+        <div class="section-note">Einfach erklärt · Begriffe alphabetisch entdecken oder gezielt suchen.</div>
+        <form id="glossary-controls" class="search-controls" role="search" aria-label="KI-Lexikon durchsuchen">
+          <div class="search-field"><label for="glossary-search">Begriff oder Erklärung durchsuchen</label><input id="glossary-search" type="search" placeholder="Zum Beispiel Prompt oder Schnittstelle" autocomplete="off" aria-controls="glossary-list"></div>
+          <button class="secondary-button" type="reset">Zurücksetzen</button>
+        </form>
+        <p id="glossary-count" class="result-count" role="status" aria-live="polite" aria-atomic="true"></p>
+        <dl id="glossary-list" class="glossary"></dl>
+        <p id="glossary-empty" class="empty-state" hidden>Keine Ergebnisse. Versuche einen anderen Begriff oder setze die Suche zurück.</p>
+      </section>
+      <section id="portfolio" class="view" hidden aria-labelledby="page-title"><div class="section-note">Fiktive Demo-Projekte zur Veranschaulichung. Keine echten Kunden oder Projektergebnisse.</div><div id="portfolio-list" class="card-grid"></div></section>
+      <noscript><p class="section-note">Bitte aktiviere JavaScript, um die sechs Ansichten und die Demo-Inhalte zu nutzen.</p></noscript>
+    </main>
+    <footer class="footer"><span>KI Second Brain · Knowledge Command Center</span><span>Ausschließlich erfundene Demo-Inhalte</span></footer>
+  </div>
+  <dialog id="detail-dialog" aria-labelledby="detail-title" aria-describedby="detail-notice">
+    <div class="dialog-header"><span class="tag">Demo-Detailansicht</span><button id="detail-close" class="secondary-button" type="button" autofocus>Schließen</button></div>
+    <h2 id="detail-title"></h2>
+    <p id="detail-notice" class="dialog-notice">Ausschließlich erfundene Demo-Inhalte. Es wird keine Aktion ausgeführt.</p>
+    <div id="detail-body"></div>
+  </dialog>
+</body>
+</html>
